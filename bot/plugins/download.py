@@ -34,7 +34,7 @@ def _download(client, message):
         filename = os.path.basename(link)
         dl_path = DOWNLOAD_DIRECTORY
       LOGGER.info(f'Download:{user_id}: {link}')
-      sent_message.edit('Downloading File:', filename)
+      sent_message.edit('**⬇️Downloading File⬇️**')
       result, file_path = download_file(link, dl_path)
       if result == True:
         sent_message.edit(Messages.DOWNLOADED_SUCCESSFULLY.format(os.path.basename(file_path), humanbytes(os.path.getsize(file_path))))
