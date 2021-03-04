@@ -13,7 +13,7 @@ from pyrogram.errors import FloodWait, RPCError
 def _download(client, message):
   user_id = message.from_user.id
   if not message.media:
-    sent_message = message.reply_text('🕵️**Checking link...**')
+    sent_message = message.reply_text('🕵️**Checking link...**' quote=True))
     if message.command:
       link = message.command[1]
     else:
@@ -34,7 +34,7 @@ def _download(client, message):
         filename = os.path.basename(link)
         dl_path = DOWNLOAD_DIRECTORY
       LOGGER.info(f'Download:{user_id}: {link}')
-      sent_message.edit(Messages.DOWNLOADING.format(link))
+      sent_message.edit('Downloading File')
       result, file_path = download_file(link, dl_path)
       if result == True:
         sent_message.edit(Messages.DOWNLOADED_SUCCESSFULLY.format(os.path.basename(file_path), humanbytes(os.path.getsize(file_path))))
